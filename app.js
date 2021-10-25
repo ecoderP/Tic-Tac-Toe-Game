@@ -59,11 +59,11 @@ function cellClick(e) {
 function placeMark(cell, currentClass) {
     cell.classList.add(currentClass);
     if(circleTurn) {
-        circleAudio.play();
         displayTurns.innerText = `X's turn now`;
+        circleAudio.play();
     } else {
+        displayTurns.innerText = `O's turn now`;
         xAudio.play();
-        displayTurns.innerText = `O's turn now`
     }
 };
 

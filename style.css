@@ -21,7 +21,6 @@ body {
     background-color: var(--color-violet);
     width: 96vw;
     height: 96vh;
-    position: relative;
 }
 
 h1 {
@@ -173,12 +172,14 @@ h1 {
     border: 1px solid #fff;
 }
 
+.footer {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+}
+
 p {
-    position: absolute;
-    bottom: 2%;
-    left: 45%;
-    font-size: 1rem;
-    /*margin: 5rem auto 0 auto;*/ 
+    font-size: 1rem; 
 }
 
 p i  {
