@@ -1,5 +1,7 @@
 let X_CLASS = 'x';
 let CIRCLE_CLASS = 'circle';
+const displayTurns = document.getElementById('game-turns');
+const drawGameAudio = new Audio("audio/draw-audio.wav");
 const endGameAudio = new Audio("audio/game-start.wav");
 const circleAudio = new Audio("audio/circle-audio.wav");
 const xAudio = new Audio("audio/x-audio.wav");
@@ -30,6 +32,7 @@ function startGame() {
         cell.classList.remove(CIRCLE_CLASS);
         cell.removeEventListener('click', cellClick);
         cell.addEventListener('click', cellClick, {once: true});
+        displayTurns.innerText = `X's turn now`;
         
     });
     
@@ -46,25 +49,21 @@ function cellClick(e) {
         endGame(false);
     } else if (isDraw()) {
         endGame(true);
-        endGameAudio.play();
+        drawGameAudio.play();
     } else {
         swapTurns();
         setBoardHover();
     }
-    //  Check for wins
-    // Check for draws
-    // Switch Turns
-    //swapTurns();
-    // Set Hover States
-    //setBoardHover();
 }
 
 function placeMark(cell, currentClass) {
     cell.classList.add(currentClass);
     if(circleTurn) {
-        circleAudio.play()
+        circleAudio.play();
+        displayTurns.innerText = `X's turn now`;
     } else {
         xAudio.play();
+        displayTurns.innerText = `O's turn now`
     }
 };
 
@@ -93,6 +92,7 @@ function checkWins(currentClass) {
 }
 
 function endGame(draw) {
+    displayTurns.innerText = 'Game Over!';
     if(draw) {
         winningMessageText.innerText = 'Draw!';
     } else {
